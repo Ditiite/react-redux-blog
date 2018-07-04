@@ -1,0 +1,52 @@
+:root{
+ 	 --text-color: rgb(0, 0, 36);
+}
+
+.container {
+	width: 80%;
+	background-color: beige;
+	color: var(--text-color);
+	margin: 20px auto;
+	min-height: 95vh;
+}
+
+
+/*_________________MAIN PAGE _______________*/
+.main-page {
+	margin: 20px auto;
+	max-width: 900px;
+	min-height: 100%;
+	display: grid;
+	grid-template-areas:  
+		". button"
+		" blog blog";
+	grid-template-columns: 1fr 1fr;
+	padding: 20px;
+	grid-gap: 20px;
+}
+
+a {
+	display: inline-block;
+	color: var(--text-color);
+	border: 1px solid silver;
+	padding: 10px;
+	margin: 10px;
+	grid-area: button;
+	width: 100px;
+	height: 20px;
+	text-align: center;
+	justify-self: right;
+}
+
+.main-page-blogs {
+	grid-area: blog;
+}
+
+.main-page-blogs-blog {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	border: 1px solid silver;
+	width: 100%;
+	justify-items: center;
+	margin: 10px 0;
+}
