@@ -18,16 +18,16 @@ export class ListPage extends Component {
  
     render() {
         return(
-            <section className="main-page">
+            <section className="list-page">
                 <Link to="/newpost" className="add-btn">
                     Add Post
                 </Link>
-                <div className="main-page-blogs">
+                <div className="list-page-blogs">
                 {
                     this.state.posts.map((post) => {
                         return (
-                            <div key={post.id} id={'post-' + post.id} className="main-page-blogs-blog">
-                                <Link to={`/posts/${post.id}`}>
+                            <div key={post.id} id={'post-' + post.id}>
+                                <Link className="posts-link" to={`/posts/${post.id}`}>
                                     <h2> {post.title} </h2>
                                     <h2> {post.category} </h2>
                                 </Link>

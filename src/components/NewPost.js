@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { addPost } from '../posts';
 
 export class NewPost extends Component {
@@ -44,7 +44,6 @@ export class NewPost extends Component {
                 <input type="text" name="category" value={this.state.category} onChange={this.handleChange} />
                 <textarea name="text" value={this.state.text} onChange={this.handleChange} />
 
-                <button type="submit">Save</button>
                 <button type="submit">Save</button>
                 <button type="reset" onClick={this.cancel}>Cancel</button>
             </form>

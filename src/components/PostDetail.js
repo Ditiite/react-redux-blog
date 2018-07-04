@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getPost } from '../posts';
+import { getPost, deletePost } from '../posts';
 
 export class PostDetail extends Component {
     constructor(props) {
@@ -8,6 +8,7 @@ export class PostDetail extends Component {
         this.state = {
             post: {}
         }
+    
     }
 
     componentDidMount() {
@@ -19,10 +20,17 @@ export class PostDetail extends Component {
         });
     }
 
+    handleDelete = (e) => {
+        const postId = parseInt(this.state.post.id, 10);
+        deletePost(postId);
+        this.props.history.push('/');
+    }
 
     render() {
         return(
             <div>
+                <Link to="/">Back to Posts</Link>
+                <button onClick={this.handleDelete}>Delete Post</button>
                 { this.state.post.title }
                 <br />
                 { this.state.post.category }

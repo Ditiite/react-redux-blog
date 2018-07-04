@@ -33,3 +33,8 @@ export function getPost(id) {
     return posts.find( (post) => post.id === id);
 }
 
+export function deletePost(id) {
+    posts = posts.filter((post) => post.id !== id);
+}
+
+

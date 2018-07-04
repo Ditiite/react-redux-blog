@@ -12,7 +12,11 @@
 
 
 /*_________________MAIN PAGE _______________*/
-.main-page {
+a {
+	display: inline-block;
+}
+
+.list-page {
 	margin: 20px auto;
 	max-width: 900px;
 	min-height: 100%;
@@ -25,7 +29,7 @@
 	grid-gap: 20px;
 }
 
-a {
+.add-btn {
 	display: inline-block;
 	color: var(--text-color);
 	border: 1px solid silver;
@@ -38,11 +42,11 @@ a {
 	justify-self: right;
 }
 
-.main-page-blogs {
+.list-page-blogs {
 	grid-area: blog;
 }
 
-.main-page-blogs-blog {
+.posts-link {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	border: 1px solid silver;
