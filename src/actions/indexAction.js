@@ -10,3 +10,10 @@ export const selectPost = (post) => {
     }
 }
 
+export const deletePost = (posts) => {
+
+    return {
+        type: "POST_DELETED",
+        data: posts
+    }
+}

@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 //import { NewPost } from './components/NewPost';
-import  ListPage  from './components/ListPage';
-//import { PostDetail } from './components/PostDetail';
+import ListPage from './container/ListPage';
+import PostDetail from './container/PostDetails';
 
 class App extends Component {
 	render() {
 		return (
 			<div className="container">
-				<Route path="/" component={ListPage} />
+				<Route exact path="/" component={ListPage} />
+				<Route exact path="/posts/:id" component={PostDetail} />
 			</div>
 		);
 	}

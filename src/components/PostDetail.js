@@ -8,14 +8,14 @@ export class PostDetail extends Component {
         this.state = {
             post: {}
         }
-    
+
     }
 
     componentDidMount() {
         const postId = parseInt(this.props.match.params.id, 10);
         const post = getPost(postId);
 
-        this.setState( {
+        this.setState({
             post
         });
     }
@@ -27,15 +27,15 @@ export class PostDetail extends Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <Link to="/">Back to Posts</Link>
                 <button onClick={this.handleDelete}>Delete Post</button>
-                { this.state.post.title }
+                {this.state.post.title}
                 <br />
-                { this.state.post.category }
+                {this.state.post.category}
                 <br />
-                { this.state.post.text }
+                {this.state.post.text}
             </div>
         );
     }
