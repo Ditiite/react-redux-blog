@@ -1,13 +1,10 @@
 // Function to combine all the reducers and to combine in one object
 import { combineReducers } from 'redux';
-import { initialState } from './reducer-posts';
-import { reducerActivePost, reducerDeletePost, reducerAddPost } from './reducer';
+import { postsReducer, activePostReducer } from './reducer';
 
 const allReducers = combineReducers({
-    posts: initialState,
-    reducerActivePost: reducerActivePost,
-    reducerDeletePost: reducerDeletePost,
-    reducerAddPost: reducerAddPost
+    posts: postsReducer,
+    activePost: activePostReducer
 });
 
 export default allReducers;

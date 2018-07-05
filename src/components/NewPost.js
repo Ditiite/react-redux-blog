@@ -2,48 +2,64 @@ import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 //import { addPost } from '../posts';
 import { connect } from 'react-redux';
+import { addPost, incrementId } from '../actions/indexAction'; 
 
 
 export class NewPost extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: '',
+            category: '',
+            text: ''
+        }
+    }
 
-    // handleChange = (event) => {
-    //     const target = event.target;
-    //     const name = target.name;
-    //     const value = target.value;
+    handleChange = (event) => {
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
 
-    //     this.setState({
-    //         [name]: value
-    //     })
-    // }
+        this.setState({
+            [name]: value
+        });
+    }
 
-    // save = (event) => {
-    //     event.preventDefault();
-    //     addPost(this.props.title, this.props.text, this.props.category);
-    //     this.props.history.push('/');
-    // }
+    save = (event) => {
+        event.preventDefault();
+        // TODO: check if state has correct title, category and text
 
-    // cancel = () => {
-    //     this.setState({
-    //         title: '',
-    //         category: '',
-    //         text: ''
-    //     });
-    //     this.props.history.push('/');
-    // }
+        this.props.addPost({
+            title: this.state.title,
+            category: this.state.category,
+            text: this.state.text
+        });
+
+        this.props.history.push('/');
+    }
+
+    cancel = () => {
+        this.setState({
+            title: '',
+            category: '',
+            text: ''
+        });
+        this.props.history.push('/');
+    }
 
     render() {
         return (
-            <form id="add-post">
+            <form id="add-post" onSubmit={this.save}>
                 <label>Title:
-                    <input type="text" name="title" />
+                    <input type="text" name="title" onChange={this.handleChange} />
                 </label>
                 <br />
                 <label>Category:
-                    <input type="text" name="category" />
+                    <input type="text" name="category" onChange={this.handleChange} />
                 </label>
                 <br />
                 <label>Write New Post
-                    <textarea name="text" />
+                    <textarea name="text" onChange={this.handleChange} />
                 </label>
                 <br />
                 <button type="submit">Save</button>
@@ -53,10 +69,14 @@ export class NewPost extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        posts: state.posts
-    }
-}
 
-export default connect(mapStateToProps)(NewPost);
+const matchDispatchToProps = dispatch => {
+    return {
+        addPost: (post) => {
+            dispatch(addPost(post));
+        }
+    }
+};
+
+
+export default connect(null, matchDispatchToProps)(NewPost);

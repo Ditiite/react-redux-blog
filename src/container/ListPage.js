@@ -10,6 +10,8 @@ import { bindActionCreators } from 'redux';
 class ListPage extends Component {
 
     render() {
+        console.log(this.props.posts);
+        //this.posts = [];
         return (
             <section className="list-page">
                 <Link to="/newpost" className="add-btn">
@@ -17,7 +19,7 @@ class ListPage extends Component {
                 </Link>
                 <div className="list-page-blogs">
                     {
-                        this.props.store.map((post) => {
+                        this.props.posts.map((post) => {
                             return (
                                 <div
                                     key={post.id}
@@ -42,9 +44,9 @@ class ListPage extends Component {
 /* MapsStateToProps takes a piece of state which is part of store and it sends it into your
 * component as props
 */
-const mapStateToProps = store => {
+const mapStateToProps = (state) => {
     return {
-        posts: store.posts
+        posts: state.posts
     }
 }
 

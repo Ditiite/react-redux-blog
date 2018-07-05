@@ -1,5 +1,6 @@
 // Reducer is basically just a piece of data to save in store
 export const initialState = {
+    activePost: {},
     posts: [
         {
             id: 1,
@@ -13,5 +14,6 @@ export const initialState = {
             text: 'this is text',
             category: 'Speech'
         }
-    ]
-}
+    ],
+    currentId: 2
+};

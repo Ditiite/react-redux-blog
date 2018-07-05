@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { selectPost, deletePost } from '../actions/indexAction';
 
 
 class PostDetails extends Component {
     handleClick = () => {
-        this.props.store.dispatch({
-            type: 'DELETE_POST'
-        });
+       this.props.deletePost(this.props.post.id);
+    this.props.history.push('/');
+    }
+
+    componentDidMount() {
+        const id = parseInt(this.props.match.params.id, 10);
+        this.props.selectPost(this.props.posts.find((post) => post.id === id) || {});
     }
 
     render() {
@@ -28,10 +33,22 @@ class PostDetails extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        post: state.reducerActivePost
+        posts: state.posts,
+        post: state.activePost
     }
 }
 
-export default connect(mapStateToProps)(PostDetails);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        selectPost: (post) => {
+            dispatch(selectPost(post));
+        },
+        deletePost: (postId) => {
+            dispatch(deletePost(postId));
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);
