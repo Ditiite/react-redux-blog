@@ -1,42 +1,59 @@
 import React, { Component } from 'react';
+//import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAll } from '../posts';
+//When we pass am action it is not enough just to import it, we need also to add it in down create function
+import { selectPost } from '../actions/indexAction';
+import { bindActionCreators } from '../../../../../../AppData/Local/Microsoft/TypeScript/2.8/node_modules/redux';
 
-export class ListPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            posts: []
-        };
-    }
-
-    componentDidMount() {
-        this.setState({
-            posts: getAll()
-        });
-    }
- 
+class ListPage extends Component {
+  
     render() {
-        return(
+        return (
             <section className="list-page">
                 <Link to="/newpost" className="add-btn">
                     Add Post
                 </Link>
                 <div className="list-page-blogs">
-                {
-                    this.state.posts.map((post) => {
-                        return (
-                            <div key={post.id} id={'post-' + post.id}>
-                                <Link className="posts-link" to={`/posts/${post.id}`}>
-                                    <h2> {post.title} </h2>
-                                    <h2> {post.category} </h2>
-                                </Link>
-                            </div>
-                        );
-                    })
-                }
+                    {
+                        this.props.posts.map((post) => {
+                            return (
+                                <div 
+                                    key={post.id} 
+                                    id={'post-' + post.id}
+                                    onClick={() => this.props.selectPost(post)}>
+                                    
+                                    <Link className="posts-link" to={`/posts/${post.id}`}>
+                                        <h2> {post.title} </h2>
+                                        <h2> {post.category} </h2>
+                                    </Link>
+                                </div>
+                            );
+                        })
+                    }
                 </div>
             </section>
         );
     }
 }
+
+// Takes åiece of application store your application state the main data and it passes it into your component as property
+/* MapsStateToProps takes a piece of state which is part of store and it sends it into your
+* component as props
+*/
+const mapStateToProps = state => {
+    return {
+        posts: state.posts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({ selectPost: selectPost}, dispatch)
+};
+
+//In order to use mapStateToProps we need to call-> connect
+// And here we also exporting the component
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
+
+
