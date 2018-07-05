@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 //When we pass am action it is not enough just to import it, we need also to add it in down create function
 import { selectPost } from '../actions/indexAction';
 import { bindActionCreators } from 'redux';
+//import { initialState } from '../reducers/reducer-posts';
 
 class ListPage extends Component {
 
@@ -16,7 +17,7 @@ class ListPage extends Component {
                 </Link>
                 <div className="list-page-blogs">
                     {
-                        this.props.posts.map((post) => {
+                        this.props.store.map((post) => {
                             return (
                                 <div
                                     key={post.id}
@@ -41,9 +42,9 @@ class ListPage extends Component {
 /* MapsStateToProps takes a piece of state which is part of store and it sends it into your
 * component as props
 */
-const mapStateToProps = state => {
+const mapStateToProps = store => {
     return {
-        posts: state.posts
+        posts: store.posts
     }
 }
 

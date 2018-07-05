@@ -3,17 +3,26 @@
 * entire function called an action creator
 */
 export const selectPost = (post) => {
-    console.log('You clicked on post', post.title);
+    console.log('You clicked on post', post.text);
     return {
-        type: "POST_SELECTED",
+        type: "SELECT_POST",
         data: post
     }
 }
 
-export const deletePost = (posts) => {
-
+export const deletePost = (id) => {
     return {
-        type: "POST_DELETED",
-        data: posts
+        type: "DELETE_POST",
+        payload: id
+    }
+}
+
+export const addPost = (currentId, title, category, text) => {
+    return {
+        type: "ADD_POST",
+        id: ++currentId,
+        title,
+        category,
+        text
     }
 }

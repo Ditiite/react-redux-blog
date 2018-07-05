@@ -1,6 +1,6 @@
 // Reducer is basically just a piece of data to save in store
-export default function() {
-    return [
+export const initialState = {
+    posts: [
         {
             id: 1,
             title: 'My day in Integrify',

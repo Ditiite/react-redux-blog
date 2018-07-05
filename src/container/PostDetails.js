@@ -4,18 +4,25 @@ import { Link } from 'react-router-dom';
 
 
 class PostDetails extends Component {
+    handleClick = () => {
+        this.props.store.dispatch({
+            type: 'DELETE_POST'
+        });
+    }
+
     render() {
         return (
             <div>
                 <Link to="/">Back to Posts</Link>
-                <button>Delete Post</button>
-                {this.props.post === null ? <p>Sorry can't find selected post!</p> :
-                    <div>
-                        <p>{this.props.post.title}</p>
-                        <p>{this.props.post.category}</p>
-                        <p>{this.props.post.text} </p>
-                    </div>
-                }
+                <button
+                    onClick={this.handleClick}>
+                    Delete Post
+                </button>
+                <div>
+                    <p>{this.props.post.title}</p>
+                    <p>{this.props.post.category}</p>
+                    <p>{this.props.post.text} </p>
+                </div>
             </div>
         );
     }
@@ -23,7 +30,7 @@ class PostDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        post: state.selectedPost
+        post: state.reducerActivePost
     }
 }
 

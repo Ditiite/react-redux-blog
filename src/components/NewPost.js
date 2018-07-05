@@ -1,52 +1,62 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
-import { addPost } from '../posts';
+//import { addPost } from '../posts';
+import { connect } from 'react-redux';
+
 
 export class NewPost extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: '',
-            category: '',
-            text: '',
-        };
-    }
 
-    handleChange = (event) => {
-        const target = event.target;
-        const name = target.name;
-        const value = target.value;
+    // handleChange = (event) => {
+    //     const target = event.target;
+    //     const name = target.name;
+    //     const value = target.value;
 
-        this.setState({
-            [name]: value
-        })
-    }
+    //     this.setState({
+    //         [name]: value
+    //     })
+    // }
 
-    save = (event) => {
-        event.preventDefault();
-        addPost(this.state.title, this.state.text, this.state.category);
-        this.props.history.push('/');
-    }
-    
-    cancel = (event) => {
-        this.setState({
-            title: '',
-            category: '',
-            text: ''
-        });
-        this.props.history.push('/');
-    }
+    // save = (event) => {
+    //     event.preventDefault();
+    //     addPost(this.props.title, this.props.text, this.props.category);
+    //     this.props.history.push('/');
+    // }
+
+    // cancel = () => {
+    //     this.setState({
+    //         title: '',
+    //         category: '',
+    //         text: ''
+    //     });
+    //     this.props.history.push('/');
+    // }
 
     render() {
-        return(
-            <form id="add-post" onSubmit={this.save} >
-                <input type="text" name="title" value={this.state.title} onChange={this.handleChange}/>
-                <input type="text" name="category" value={this.state.category} onChange={this.handleChange} />
-                <textarea name="text" value={this.state.text} onChange={this.handleChange} />
-
+        return (
+            <form id="add-post">
+                <label>Title:
+                    <input type="text" name="title" />
+                </label>
+                <br />
+                <label>Category:
+                    <input type="text" name="category" />
+                </label>
+                <br />
+                <label>Write New Post
+                    <textarea name="text" />
+                </label>
+                <br />
                 <button type="submit">Save</button>
-                <button type="reset" onClick={this.cancel}>Cancel</button>
+                <button type="reset">Cancel</button>
             </form>
         );
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        posts: state.posts
+    }
+}
+
+export default connect(mapStateToProps)(NewPost);

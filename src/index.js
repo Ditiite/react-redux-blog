@@ -6,7 +6,7 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
-import allReducers from './reducers/reducer';
+import allReducers from './reducers/index';
 
 
 const store = createStore(allReducers);
@@ -16,5 +16,5 @@ ReactDOM.render(
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </Provider>, 
+    </Provider>,
     document.getElementById('root'));
