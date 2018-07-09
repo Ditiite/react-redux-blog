@@ -9,7 +9,6 @@ const generateId = ((startId) => {
 })(initialState.currentId);
 
 /**
- * 
  * @param {post[]} posts
  * @param {type: any, payload: any} action 
  */

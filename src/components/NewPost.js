@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../actions/indexAction';
+//import AddIngredient from './addIngredient';
 
 export class NewPost extends Component {
     constructor(props) {
@@ -25,6 +26,15 @@ export class NewPost extends Component {
         this.setState({
             [event.target.name]: event.target.value
         });
+        console.log([event.target.name], event.target.value);
+    }
+
+    handleChangeI = (event) => {
+
+        this.setState({
+            ingredients: [...this.state.ingredients, event.target.value]
+        });
+        console.log('amount', this.state.ingredients)
     }
 
     handleIngredients = (e) => {
@@ -32,6 +42,7 @@ export class NewPost extends Component {
             amount: e.target.value,
             ingredient: e.target.value
         })
+
     }
 
     save = (event) => {
@@ -73,25 +84,35 @@ export class NewPost extends Component {
         return (
             <form id="add-post" onSubmit={this.save}>
                 <label className="add-post-title">Title:</label>
-                <input className="add-post-title-input" type="text" name="title" onChange={this.handleChange} />
+                <input className="add-post-title-input"
+                    type="text" name="title"
+                    onChange={this.handleChange}
+                    value={this.state.value} />
 
                 <label className="add-post-category">Category:</label>
-                <input className="add-post-category-input" type="text" name="category" onChange={this.handleChange} />
+                <input className="add-post-category-input"
+                    type="text"
+                    name="category"
+                    onChange={this.handleChange}
+                    value={this.state.value} />
 
                 <div className="write-new-post">
                     <label>Add description</label>
                     <br />
-                    <textarea className="write-new-post-textarea" name="text" onChange={this.handleChange} />
+                    <textarea className="write-new-post-textarea"
+                        name="text"
+                        onChange={this.handleChange}
+                        value={this.state.value} />
                 </div>
-                <div className="add-new-ingredient">
-                    <label>Amount</label>
-                    <input type="text" name="amount" onChange={this.handleChange} />
 
-                    <label>Ingredient</label>
-                    <input type="text" name="ingredient" onChange={this.handleChange} />
-                </div>
-                <p>{this.state.amount} - {this.state.ingredient}</p>
-                <button onClick={this.handleIngredients}>Add mores ingredients</button>
+                <input name="amount"
+                    onChange={this.handleChangeI}
+                    value={this.state.value} />
+                {/* <AddIngredient
+                    amount={this.state.amount}
+                    ingredient={this.state.ingredient}
+                    handleIngredients={this.handleIngredients}
+                    handleChange={this.handleChangeI} /> */}
 
                 <button className="btn-save btn">Save</button>
                 <button onClick={this.cancel} className="btn-cancel btn" type="reset">Cancel</button>
