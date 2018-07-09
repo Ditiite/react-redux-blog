@@ -1,5 +1,10 @@
+
+/* Styles from toastr 
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
+*/
 :root{
- 	 --text-color: rgb(0, 0, 36);
+	  --text-color: rgb(0, 0, 36);
+	  --main-title-font: 'Arizonia', cursive;
 }
 
 .container {
@@ -10,10 +15,16 @@
 	min-height: 95vh;
 }
 
-
 /*_________________MAIN PAGE _______________*/
+.main-title {
+	font-family: var(--main-title-font);
+	font-size: 3em;
+	text-align: center;
+}
+
 a {
 	display: inline-block;
+	text-decoration: none;
 }
 
 .list-page {
@@ -29,28 +40,112 @@ a {
 	grid-gap: 20px;
 }
 
+.list-page-cook {
+	position: absolute;
+	width: 100px;
+	left: -86px;
+}
+
+.add-btn-section {
+	position: relative;
+	grid-area: button;
+	justify-items: end;
+}
+
 .add-btn {
 	display: inline-block;
 	color: var(--text-color);
 	border: 1px solid silver;
 	padding: 10px;
 	margin: 10px;
-	grid-area: button;
 	width: 100px;
 	height: 20px;
 	text-align: center;
-	justify-self: right;
+	position: absolute;
+	bottom: 10px;
+    right: 10px;
 }
 
 .list-page-blogs {
 	grid-area: blog;
+	position: relative;
 }
 
 .posts-link {
+	box-sizing: border-box;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 2fr repeat(2, 1fr);
 	border: 1px solid silver;
 	width: 100%;
 	justify-items: center;
+	align-items: center;
 	margin: 10px 0;
+	padding: 10px;
+}
+
+.recipe-avatar {
+	width: 100px;
+	height: 100px;
+	justify-self: end;
+}
+
+/*___________________ ADD NEW POST PAGE ___________________*/
+#add-post {
+	display: grid;
+	grid-template-areas: 
+		"title t-input"
+		"category c-category"
+		"text text"
+		"button-save button-delete";
+	padding: 20px;
+	grid-gap: 20px;
+}
+
+.add-post-title {
+	grid-area: title;
+	justify-self: end;
+}
+
+.add-post-title-input {
+	grid-area: t-input;
+}
+
+.add-post-category {
+	grid-area: category;
+	justify-self: end;
+}
+
+.add-post-category-input {
+	grid-area: c-category;
+}
+
+.write-new-post {
+	grid-area: text;
+}
+
+.btn-save {
+	grid-area: button-save;
+	justify-self: end;
+	width: 100px;
+}
+
+.btn-cancel {
+	grid-area: button-delete;
+	justify-self: start;
+	width: 100px;
+}
+
+.write-new-post-textarea {
+	min-width: 100%;
+	min-height: 100px;
+	grid-column: span 2;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.btn {
+	color: var(--text-color);
+	padding: 10px;
+	border-radius: 3px;
+	box-shadow: 1px 1px 10px silver;
 }

@@ -6,18 +6,24 @@ import { Link } from 'react-router-dom';
 import { selectPost } from '../actions/indexAction';
 import { bindActionCreators } from 'redux';
 //import { initialState } from '../reducers/reducer-posts';
+import cook from '../images/cook.png';
+import cookies from '../images/cookies.jpg';
 
 class ListPage extends Component {
 
     render() {
-        console.log(this.props.posts);
         //this.posts = [];
         return (
             <section className="list-page">
-                <Link to="/newpost" className="add-btn">
-                    Add Post
-                </Link>
+                <h1 className="main-title">My favorite recipes</h1>
+                <div className="add-btn-section">
+                    <Link to="/newpost" className="add-btn">
+                        Add Recipe
+                    </Link>
+                </div>
+
                 <div className="list-page-blogs">
+                    <img src={cook} alt="Cook" className="list-page-cook" />
                     {
                         this.props.posts.map((post) => {
                             return (
@@ -25,10 +31,10 @@ class ListPage extends Component {
                                     key={post.id}
                                     id={'post-' + post.id}
                                     onClick={() => this.props.selectPost(post)}>
-
                                     <Link className="posts-link" to={`/posts/${post.id}`}>
                                         <h2> {post.title} </h2>
                                         <h2> {post.category} </h2>
+                                        <img className="recipe-avatar" src={cookies} alt="" />
                                     </Link>
                                 </div>
                             );
