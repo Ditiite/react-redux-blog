@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 //import { addPost } from '../posts';
 import { connect } from 'react-redux';
-import { addPost, incrementId } from '../actions/indexAction'; 
+import { addPost } from '../actions/indexAction';
 
 
 export class NewPost extends Component {
@@ -70,7 +70,7 @@ export class NewPost extends Component {
 }
 
 
-const matchDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
     return {
         addPost: (post) => {
             dispatch(addPost(post));
@@ -79,4 +79,4 @@ const matchDispatchToProps = dispatch => {
 };
 
 
-export default connect(null, matchDispatchToProps)(NewPost);
+export default connect(null, mapDispatchToProps)(NewPost);

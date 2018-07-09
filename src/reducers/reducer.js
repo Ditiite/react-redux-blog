@@ -13,8 +13,9 @@ const generateId = ((startId) => {
  * @param {post[]} posts
  * @param {type: any, payload: any} action 
  */
+
 export const postsReducer = (posts = initialState.posts, action) => {
-    
+
     switch (action.type) {
         case types.ADD_POST:
             return [
@@ -25,7 +26,7 @@ export const postsReducer = (posts = initialState.posts, action) => {
             ];
         case types.DELETE_POST:
             return [...posts.filter((post) => post.id !== action.payload)]
-        default: 
+        default:
             return posts;
     }
 }
@@ -33,7 +34,7 @@ export const postsReducer = (posts = initialState.posts, action) => {
 
 export const activePostReducer = (activePost = initialState.activePost, action) => {
     switch (action.type) {
-        case types.SELECT_POST: 
+        case types.SELECT_POST:
             return action.payload;
         default:
             return {};
