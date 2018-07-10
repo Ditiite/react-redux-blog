@@ -28,7 +28,7 @@ class PostDetails extends Component {
                 <button
                     onClick={this.handleClick}>
                     Delete Recipe
-                        </button>
+                </button>
                 <div>
                     <p>{this.props.post.title}</p>
                     <p>{this.props.post.category}</p>
@@ -40,6 +40,7 @@ class PostDetails extends Component {
                             </ul>)
                         })
                     }
+                   
                 </div>
             </div>
         );

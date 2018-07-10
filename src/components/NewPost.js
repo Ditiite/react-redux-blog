@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../actions/indexAction';
 //import AddIngredient from './addIngredient';
+import ImageInput from './ImageInput';
+
 
 export class NewPost extends Component {
     constructor(props) {
@@ -82,6 +84,14 @@ export class NewPost extends Component {
 
     render() {
         return (
+            <div>
+                <form className="create-contact-form">
+                    <ImageInput
+                        className="create-contact-avatar-input"
+                        name="avatarURL"
+                        maxHeight={64}
+                    />
+                </form>
             <form id="add-post" onSubmit={this.save}>
                 <label className="add-post-title">Title:</label>
                 <input className="add-post-title-input"
@@ -105,18 +115,22 @@ export class NewPost extends Component {
                         value={this.state.value} />
                 </div>
 
-                <input name="amount"
+                {/* {{<input name="amount"
                     onChange={this.handleChangeI}
-                    value={this.state.value} />
+                    value={this.state.value} />}} */}
                 {/* <AddIngredient
                     amount={this.state.amount}
                     ingredient={this.state.ingredient}
                     handleIngredients={this.handleIngredients}
                     handleChange={this.handleChangeI} /> */}
-
+                   
+                
+                <p>Hello</p>
                 <button className="btn-save btn">Save</button>
                 <button onClick={this.cancel} className="btn-cancel btn" type="reset">Cancel</button>
             </form>
+            
+            </div>
         );
     }
 }
