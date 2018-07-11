@@ -17,6 +17,7 @@ export const postsReducer = (posts = initialState.posts, action) => {
 
     switch (action.type) {
         case types.ADD_POST:
+            console.log('This is reducer', posts, action.payload);
             return [
                 ...posts, {
                     ...action.payload,
@@ -24,7 +25,8 @@ export const postsReducer = (posts = initialState.posts, action) => {
                 }
             ];
         case types.DELETE_POST:
-            return [...posts.filter((post) => post.id !== action.payload)]
+            return [...posts.filter((post) => post.id !== action.payload)];
+
         default:
             return posts;
     }
@@ -32,10 +34,19 @@ export const postsReducer = (posts = initialState.posts, action) => {
 
 
 export const activePostReducer = (activePost = initialState.activePost, action) => {
+
     switch (action.type) {
         case types.SELECT_POST:
             return action.payload;
+
+        case types.INCREMENT_LIKES:
+            console.log("Incrementing Likes!!", action.payload);
+            const newPosts = ...activePost,
+                newPosts.likes = action.payload.count
+            return newPosts;
+
         default:
             return {};
     }
 }
+

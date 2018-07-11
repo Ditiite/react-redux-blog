@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectPost, deletePost } from '../actions/indexAction';
-
+import { selectPost, deletePost, increment } from '../actions/indexAction';
 
 class PostDetails extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         likes: 0
+    //     }
+    // }
     handleClick = () => {
         this.props.deletePost(this.props.post.id);
         this.props.history.push('/');
@@ -16,12 +21,12 @@ class PostDetails extends Component {
         this.props.selectPost(this.props.posts.find((post) => post.id === id) || {});
     }
 
-    render() {
-        console.log('Type of ingredients', typeof this.props.post.ingredients);
-        console.log('Ingredients', this.props.post.ingredients);
-        let ingredients = this.props.post.ingredients;
+    increment = () => {
+        this.props.increment({ likes: this.props.post.likes, count: 100 });
+    }
 
-        console.log(ingredients);
+    render() {
+
         return (
             <div>
                 <Link to="/">Back to Recipes</Link>
@@ -32,15 +37,18 @@ class PostDetails extends Component {
                 <div>
                     <p>{this.props.post.title}</p>
                     <p>{this.props.post.category}</p>
-                    <p>{this.props.post.text} </p>
-                    {
-                        ingredients.map(item => {
+                    <p>{this.props.post.text}</p>
+                    {/* {
+                        this.props.post.ingredients.map(item => {
                             return (<ul>
                                 <li>{item.amount} - {item.ingredient}</li>
                             </ul>)
                         })
-                    }
-                   
+                    } */}
+
+                </div>
+                <div className="control-buttons">
+                    <button onClick={this.increment} className="likes">&hearts; {this.props.post.likes}</button>
                 </div>
             </div>
         );
@@ -57,7 +65,8 @@ class PostDetails extends Component {
 const mapStateToProps = (state) => {
     return {
         posts: state.posts,
-        post: state.activePost
+        post: state.activePost,
+        likes: state.likes
     }
 }
 
@@ -68,6 +77,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         deletePost: (postId) => {
             dispatch(deletePost(postId));
+        },
+        increment: (likes) => {
+            dispatch(increment(likes));
         }
     }
 };

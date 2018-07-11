@@ -14,14 +14,16 @@ let posts = [
         {
             amount: 2,
             ingredient: 'banana'
-        }]
+        }],
+        likes: 10
     },
     {
         id: 2,
         title: 'My talk at React Meetup',
         text: 'this is text',
         category: 'Speech',
-        ingredients: [19, 'toamto']
+        ingredients: [19, 'toamto'],
+        likes: 10
     }
 ];
 
@@ -29,7 +31,7 @@ export function getAll() {
     return posts;
 }
 
-export function addPost(title, text, category) {
+export function addPost(title, text, category, ingredients) {
     posts.push({
         id: ++currentId,
         title,

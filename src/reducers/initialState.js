@@ -16,7 +16,8 @@ export const initialState = {
                     amount: 2,
                     ingredient: 'banana'
                 }
-            ]
+            ],
+            likes: 0
         },
         {
             id: 2,
@@ -26,7 +27,8 @@ export const initialState = {
             ingredients: [{
                 amount: 1,
                 ingredient: 'apple'
-            }]
+            }],
+            likes: 10
         }
     ],
     currentId: 2

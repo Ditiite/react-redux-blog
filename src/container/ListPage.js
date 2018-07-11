@@ -12,7 +12,8 @@ import cookies from '../images/cookies.jpg';
 class ListPage extends Component {
 
     render() {
-        //this.posts = [];
+        // this.posts = [];
+        console.log(this.props.posts);
         return (
             <section className="list-page">
                 <h1 className="main-title">My favorite recipes</h1>

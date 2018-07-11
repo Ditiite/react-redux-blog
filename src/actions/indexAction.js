@@ -3,6 +3,8 @@ import * as types from '../constants/ActionTypes';
 * Action is an object with atleast one part - type
 * entire function called an action creator
 */
+
+// Select one post
 export const selectPost = (post) => {
     return {
         type: types.SELECT_POST,
@@ -10,6 +12,7 @@ export const selectPost = (post) => {
     }
 }
 
+// Delete post
 export const deletePost = (id) => {
     return {
         type: types.DELETE_POST,
@@ -17,9 +20,19 @@ export const deletePost = (id) => {
     }
 }
 
+// Add post
 export const addPost = (post) => {
     return {
         type: types.ADD_POST,
         payload: post
+    }
+}
+
+// increment
+export const increment = (likes) => {
+    console.log('Hello');
+    return {
+        type: types.INCREMENT_LIKES,
+        payload: likes
     }
 }

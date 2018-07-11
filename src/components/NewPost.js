@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../actions/indexAction';
 //import AddIngredient from './addIngredient';
-import ImageInput from './ImageInput';
+//import ImageInput from './ImageInput';
 
 
 export class NewPost extends Component {
@@ -14,13 +14,7 @@ export class NewPost extends Component {
         this.state = {
             title: '',
             category: '',
-            text: '',
-            ingredients: [
-                {
-                    amount: '',
-                    ingredient: ''
-                }
-            ]
+            text: ''
         }
     }
 
@@ -31,23 +25,7 @@ export class NewPost extends Component {
         console.log([event.target.name], event.target.value);
     }
 
-    handleChangeI = (event) => {
-
-        this.setState({
-            ingredients: [...this.state.ingredients, event.target.value]
-        });
-        console.log('amount', this.state.ingredients)
-    }
-
-    handleIngredients = (e) => {
-        this.setState({
-            amount: e.target.value,
-            ingredient: e.target.value
-        })
-
-    }
-
-    save = (event) => {
+    /*save = (event) => {
         event.preventDefault();
         // TODO: check if state has correct title, category and text
 
@@ -65,33 +43,26 @@ export class NewPost extends Component {
         });
         this.props.history.push('/');
         //}
+    }*/
+    save = (event) => {
+        event.preventDefault();
+        this.props.addPost({ title: this.state.title, text: this.state.text, category: this.state.category });
+        this.props.history.push('/');
     }
 
     cancel = () => {
         this.setState({
             title: '',
             category: '',
-            text: '',
-            ingredients: [
-                {
-                    amount: '',
-                    ingredient: ''
-                }
-            ]
+            text: ''
         });
+
         this.props.history.push('/');
     }
 
     render() {
         return (
-            <div>
-                <form className="create-contact-form">
-                    <ImageInput
-                        className="create-contact-avatar-input"
-                        name="avatarURL"
-                        maxHeight={64}
-                    />
-                </form>
+
             <form id="add-post" onSubmit={this.save}>
                 <label className="add-post-title">Title:</label>
                 <input className="add-post-title-input"
@@ -115,22 +86,9 @@ export class NewPost extends Component {
                         value={this.state.value} />
                 </div>
 
-                {/* {{<input name="amount"
-                    onChange={this.handleChangeI}
-                    value={this.state.value} />}} */}
-                {/* <AddIngredient
-                    amount={this.state.amount}
-                    ingredient={this.state.ingredient}
-                    handleIngredients={this.handleIngredients}
-                    handleChange={this.handleChangeI} /> */}
-                   
-                
-                <p>Hello</p>
                 <button className="btn-save btn">Save</button>
                 <button onClick={this.cancel} className="btn-cancel btn" type="reset">Cancel</button>
             </form>
-            
-            </div>
         );
     }
 }
