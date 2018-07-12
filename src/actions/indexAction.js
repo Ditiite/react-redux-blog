@@ -28,11 +28,10 @@ export const addPost = (post) => {
     }
 }
 
-// increment
-export const increment = (likes) => {
-    console.log('Hello');
+//increment
+export const increment = (index) => {
     return {
         type: types.INCREMENT_LIKES,
-        payload: likes
+        index
     }
 }

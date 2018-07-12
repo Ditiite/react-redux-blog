@@ -5,12 +5,7 @@ import { Link } from 'react-router-dom';
 import { selectPost, deletePost, increment } from '../actions/indexAction';
 
 class PostDetails extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         likes: 0
-    //     }
-    // }
+
     handleClick = () => {
         this.props.deletePost(this.props.post.id);
         this.props.history.push('/');
@@ -21,35 +16,36 @@ class PostDetails extends Component {
         this.props.selectPost(this.props.posts.find((post) => post.id === id) || {});
     }
 
-    increment = () => {
-        this.props.increment({ likes: this.props.post.likes, count: 100 });
+    handleClick = (event) => {
+        this.props.increment(this.props.i);
     }
 
     render() {
 
         return (
-            <div>
+            <div className="single-post">
                 <Link to="/">Back to Recipes</Link>
-                <button
+                <button className="btn-delete"
                     onClick={this.handleClick}>
                     Delete Recipe
                 </button>
                 <div>
-                    <p>{this.props.post.title}</p>
+                    <h1>{this.props.post.title}</h1>
                     <p>{this.props.post.category}</p>
                     <p>{this.props.post.text}</p>
-                    {/* {
+                    {
                         this.props.post.ingredients.map(item => {
                             return (<ul>
                                 <li>{item.amount} - {item.ingredient}</li>
                             </ul>)
                         })
-                    } */}
+                    }
 
                 </div>
-                <div className="control-buttons">
-                    <button onClick={this.increment} className="likes">&hearts; {this.props.post.likes}</button>
-                </div>
+                <button className="btn-likes"
+                    onClick={this.handleClick}>
+                    <span>&hearts;</span>{this.props.post.likes}
+                </button>
             </div>
         );
     }
@@ -65,8 +61,7 @@ class PostDetails extends Component {
 const mapStateToProps = (state) => {
     return {
         posts: state.posts,
-        post: state.activePost,
-        likes: state.likes
+        post: state.activePost
     }
 }
 
@@ -78,8 +73,8 @@ const mapDispatchToProps = (dispatch) => {
         deletePost: (postId) => {
             dispatch(deletePost(postId));
         },
-        increment: (likes) => {
-            dispatch(increment(likes));
+        increment: index => {
+            dispatch(increment(index))
         }
     }
 };

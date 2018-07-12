@@ -3,16 +3,26 @@
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 */
 :root{
-	  --text-color: rgb(0, 0, 36);
-	  --main-title-font: 'Arizonia', cursive;
+		--text-color: rgb(0, 0, 36);
+		--main-title-font: 'Arizonia', cursive;
+		--pink: #ff0078;
+		--green: #00bcb1;
+		--light-green: #67cbaf;
+		--yellow: #d9dba1;
+		--light-pink: #ff9797;
+}
+
+body {
+	background-color: rgb(38, 32, 36);
 }
 
 .container {
 	width: 80%;
-	background-color: beige;
+	/* background-color: beige; */
 	color: var(--text-color);
 	margin: 20px auto;
 	min-height: 95vh;
+	border: 1px silver var(--pink);
 }
 
 /*_________________MAIN PAGE _______________*/
@@ -20,6 +30,7 @@ import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 	font-family: var(--main-title-font);
 	font-size: 3em;
 	text-align: center;
+	color: var(--light-pink);
 }
 
 a {
@@ -72,6 +83,7 @@ a {
 }
 
 .posts-link {
+	background: #ff9797;
 	box-sizing: border-box;
 	display: grid;
 	grid-template-columns: 2fr repeat(2, 1fr);
@@ -83,11 +95,6 @@ a {
 	padding: 10px;
 }
 
-.recipe-avatar {
-	width: 100px;
-	height: 100px;
-	justify-self: end;
-}
 
 /*___________________ ADD NEW POST PAGE ___________________*/
 #add-post {
@@ -154,3 +161,22 @@ a {
 .create-contact-form {
 	background: red;
 }
+
+/*_________________ BUTTONS ___________________*/
+.btn-delete:hover {
+	font-size: 1.5em;
+	padding: 10px;
+	border: 2px solid var(--pink);
+	border-radius: 5px;
+	color: white;
+	background: linear-gradient(var(--pink), var(--light-pink));
+ }
+ 
+ .btn-delete {
+	font-size: 1.5em;
+	padding: 10px;
+	border: 2px solid var(--pink);
+	border-radius: 5px;
+	color: white;
+	background: linear-gradient(var(--yellow), var(--light-green));
+ }

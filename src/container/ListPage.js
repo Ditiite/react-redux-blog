@@ -7,10 +7,13 @@ import { selectPost } from '../actions/indexAction';
 import { bindActionCreators } from 'redux';
 //import { initialState } from '../reducers/reducer-posts';
 import cook from '../images/cook.png';
-import cookies from '../images/cookies.jpg';
+import cookies2 from '../images/cookies2.jpg';
 
 class ListPage extends Component {
 
+    handleClick = (event) => {
+        this.props.increment(this.props.likes);
+    }
     render() {
         // this.posts = [];
         console.log(this.props.posts);
@@ -26,17 +29,22 @@ class ListPage extends Component {
                 <div className="list-page-blogs">
                     <img src={cook} alt="Cook" className="list-page-cook" />
                     {
-                        this.props.posts.map((post) => {
+                        this.props.posts.map((post, i) => {
                             return (
                                 <div
+                                    likes={i}
                                     key={post.id}
                                     id={'post-' + post.id}
                                     onClick={() => this.props.selectPost(post)}>
                                     <Link className="posts-link" to={`/posts/${post.id}`}>
                                         <h2> {post.title} </h2>
                                         <h2> {post.category} </h2>
-                                        <img className="recipe-avatar" src={cookies} alt="" />
+                                        <img className="recipe-avatar" src={cookies2} alt="" />
                                     </Link>
+                                    <button className="btn-likes"
+                                        onClick={this.handleClick}>
+                                        &hearts;{post.likes}
+                                    </button>
                                 </div>
                             );
                         })

@@ -1,0 +1,20 @@
+.btn-likes {
+    background-color: transparent;
+    color: var(--pink);
+    border: none;
+
+}
+
+.btn-likes > span {
+    padding: 10px;
+    
+}
+
+/*___________________IMG ________________*/
+.recipe-avatar {
+	width: 100px;
+	height: 100px;
+    justify-self: end;
+    box-shadow: 2px 9px 50px -9px var(--pink);
+    border-radius: 3px;
+}

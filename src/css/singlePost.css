@@ -1,0 +1,15 @@
+:root{
+    --text-color: rgb(0, 0, 36);
+    --main-title-font: 'Arizonia', cursive;
+    --pink: #ff0078;
+    --green: #00bcb1;
+    --light-green: #67cbaf;
+    --yellow: #d9dba1;
+    --light-pink: #ff9797;
+}
+
+.single-post {
+    border: 1px solid var(--pink);
+    padding: 20px;
+    line-height: 25px;
+}
