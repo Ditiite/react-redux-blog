@@ -18,12 +18,11 @@ button {
     background-color: transparent;
     color: var(--pink);
     border: none;
-
+    text-align: left;
 }
 
 .btn-likes > span {
-    padding: 10px;
-    
+    padding: 10px;  
 }
 
 .btn-delete:hover {
@@ -40,16 +39,34 @@ button {
  }
  
 .btn-delete,
-.btn-back{
-    width: 200px;
+.btn-back {
+    width: 220px;
 	font-size: 1em;
-	padding: 10px;
+	padding: 10px 0;
 	border: 2px solid var(--green);
 	border-radius: 5px;
 	color: white;
     background: linear-gradient(var(--yellow), var(--light-green));
     font-family: var(--font-family-1);
  }
+
+.btn-add {
+    width: 220px;
+    font-size: 1em;
+	padding: 10px 0;
+	border: 2px solid var(--green);
+	border-radius: 5px;
+	color: white;
+    background: linear-gradient(var(--yellow), var(--light-green));
+    font-family: var(--font-family-1);
+    text-align: center;
+	display: inline-block;
+	margin: 10px 0;
+	height: 20px;
+	position: absolute;
+	bottom: 10px;
+    right: 0px;
+}
 
 .single-post a {
     text-align: center;

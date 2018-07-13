@@ -21,7 +21,7 @@ class ListPage extends Component {
             <section className="list-page">
                 <h1 className="main-title">My favorite recipes</h1>
                 <div className="add-btn-section">
-                    <Link to="/newpost" className="add-btn">
+                    <Link to="/newpost" className="btn-add">
                         Add Recipe
                     </Link>
                 </div>

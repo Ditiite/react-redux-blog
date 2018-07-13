@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectPost, deletePost, increment } from '../actions/indexAction';
+import cookies2 from '../images/cookies2.jpg';
 
 class PostDetails extends Component {
 
@@ -29,17 +30,19 @@ class PostDetails extends Component {
                     onClick={this.handleClick}>
                     Delete Recipe
                 </button>
-                <div>
-                    <h1 className="post-title">{this.props.post.title}</h1>
-                    <p>{this.props.post.category}</p>
-                    <p>{this.props.post.text}</p>
-                    {
-                        this.props.post.ingredients.map(item => {
-                            return (<ul>
-                                <li>{item.amount} - {item.ingredient}</li>
-                            </ul>)
-                        })
-                    }
+                <h1 className="post-title">{this.props.post.title}</h1>
+                <div className="post-description">
+
+                    <p className="category">Category: {this.props.post.category}</p>
+                    <p className="posts-text">{this.props.post.text}</p>
+                    <ul className="ingredients">
+                        {
+                            this.props.post.ingredients.map(item => {
+                                return (<li>{item.amount} - {item.ingredient}</li>)
+                            })
+                        }
+                    </ul>
+                    <img className="single-recipe-avatar" src={cookies2} alt="" />
 
                 </div>
                 <button className="btn-likes"
