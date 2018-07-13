@@ -3,7 +3,7 @@
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 */
 :root{
-		--text-color: rgb(0, 0, 36);
+		--link: rgb(63, 62, 62);
 		--main-title-font: 'Arizonia', cursive;
 		--pink: #ff0078;
 		--green: #00bcb1;
@@ -16,6 +16,10 @@ import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 body {
 	background-color: rgb(53, 53, 53);
 	font-family: var(--font-family-2);
+}
+
+.list-page-blogs a{
+	color: var(--link);
 }
 
 .container {
