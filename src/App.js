@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import './css/singlePost.css';
 import './css/btn-img.css';
+import './css/addRecipe.css';
+
 import { Route } from 'react-router-dom';
 //import { NewPost } from './components/NewPost';
 import ListPage from './container/ListPage';

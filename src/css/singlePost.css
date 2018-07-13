@@ -6,10 +6,23 @@
     --light-green: #67cbaf;
     --yellow: #d9dba1;
     --light-pink: #ff9797;
+    --light: #ffebf3;
+    --single-post-title: 'Kaushan Script', cursive;
 }
 
 .single-post {
     border: 1px solid var(--pink);
     padding: 20px;
     line-height: 25px;
+    background-color: var(--light);
+    color: var(--text-color);
+}
+
+.post-title {
+    font-family: var(--single-post-title);
+    text-align: center;
+}
+
+.heart {
+    font-size: 40px;
 }

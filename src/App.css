@@ -10,10 +10,12 @@ import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 		--light-green: #67cbaf;
 		--yellow: #d9dba1;
 		--light-pink: #ff9797;
+		--font-family-1: 'Mukta Malar', sans-serif;;
 }
 
 body {
 	background-color: rgb(38, 32, 36);
+	font-family: var(--font-family-2);
 }
 
 .container {
@@ -162,21 +164,3 @@ a {
 	background: red;
 }
 
-/*_________________ BUTTONS ___________________*/
-.btn-delete:hover {
-	font-size: 1.5em;
-	padding: 10px;
-	border: 2px solid var(--pink);
-	border-radius: 5px;
-	color: white;
-	background: linear-gradient(var(--pink), var(--light-pink));
- }
- 
- .btn-delete {
-	font-size: 1.5em;
-	padding: 10px;
-	border: 2px solid var(--pink);
-	border-radius: 5px;
-	color: white;
-	background: linear-gradient(var(--yellow), var(--light-green));
- }

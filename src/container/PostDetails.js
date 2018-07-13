@@ -24,13 +24,13 @@ class PostDetails extends Component {
 
         return (
             <div className="single-post">
-                <Link to="/">Back to Recipes</Link>
+                <Link to="/" className="btn-back">Back to Recipes</Link>
                 <button className="btn-delete"
                     onClick={this.handleClick}>
                     Delete Recipe
                 </button>
                 <div>
-                    <h1>{this.props.post.title}</h1>
+                    <h1 className="post-title">{this.props.post.title}</h1>
                     <p>{this.props.post.category}</p>
                     <p>{this.props.post.text}</p>
                     {
@@ -44,7 +44,7 @@ class PostDetails extends Component {
                 </div>
                 <button className="btn-likes"
                     onClick={this.handleClick}>
-                    <span>&hearts;</span>{this.props.post.likes}
+                    <span className="heart">&hearts;</span>{this.props.post.likes}
                 </button>
             </div>
         );
